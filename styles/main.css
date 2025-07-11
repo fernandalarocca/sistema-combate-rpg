@@ -1,0 +1,424 @@
+/* Estilo do body */
+body {
+    background-color: #2F2D2E;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+body *:not(.header > h1, i) {
+    font-family: "Bebas Neue", sans-serif !important;
+    font-weight: 400;
+}
+
+/* Layout principal com menu lateral */
+.main-layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* Estilo da sidebar */
+.header {
+    width: 280px;
+    min-width: 240px;
+    background-color: #FBFBFF;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.header>img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.header>h1 {
+    font-size: 50px;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: #657ED4;
+    text-align: center;
+}
+
+/* Conteúdo ao lado da sidebar */
+.content-container {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* Estilo do botão */
+.open-button,
+.delete-button {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 25px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #FBFBFF;
+}
+
+.open-button {
+    background-color: #A8C256;
+}
+
+.delete-button {
+    background-color: #FF331F;
+}
+
+.open-button:hover,
+.delete-button:hover {
+    background-color: #FBFBFF;
+}
+
+.open-button:hover {
+    color: #A8C256;
+    border: #A8C256 solid 2px;
+}
+
+.delete-button:hover {
+    color: #FF331F;
+    border: #FF331F solid 2px;
+}
+
+/* Container do popup */
+.form-popup {
+    display: none;
+    /* Escondido por padrão */
+    position: fixed;
+    z-index: 9;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #657ED4;
+    background-color: #FBFBFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo do formulário */
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inputs do formulário */
+.form-container input[type="text"],
+.form-container input[type="number"] {
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container label {
+    font-size: 18px;
+}
+
+.form-container input::placeholder {
+    font-size: 16px;
+}
+
+/* Botões do formulário */
+.form-container .btn {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #A8C256;
+    color: #FBFBFF;
+    cursor: pointer;
+}
+
+.form-container .btn:hover {
+    background-color: #FBFBFF;
+    color: #A8C256;
+    border: #A8C256 solid 2px;
+}
+
+.form-container .cancel {
+    background-color: #FF331F;
+}
+
+.form-container .cancel:hover {
+    background-color: #FBFBFF;
+    color: #FF331F;
+    border: #FF331F solid 2px;
+}
+
+/* Estilo do bloco dos personagens */
+.character {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: #FBFBFF solid 1px;
+    margin: 10px 0px 10px 0px;
+}
+
+.character-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.character-top img {
+    width: 50px;
+    height: 50px;
+    border: #FBFBFF solid 2px;
+    border-radius: 100px;
+}
+
+.name-and-pv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.name-and-pv h2 {
+    color: #FBFBFF;
+    margin: 0;
+}
+
+.name-and-pv span, .btn-pvtemp {
+    color: #FBFBFF;
+    border: #FBFBFF solid 2px;
+    border-radius: 100px;
+    padding: 5px 10px;
+    font-size: 20px;
+    background-color: #2F2D2E;
+}
+
+.btn-pvtemp {
+    cursor: pointer;
+}
+
+.btn-pvtemp:hover {
+    color: #2F2D2E;
+    background-color: #FBFBFF;
+    border: #2F2D2E solid 2px;
+}
+
+.character-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.character-button {
+    background-color: #FBFBFF;
+    color: #657ED4;
+    border: #657ED4 solid 2px;
+    border-radius: 100px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.character-button:hover {
+    background-color: #657ED4;
+    color: #FBFBFF;
+    border: #FBFBFF solid 2px;
+}
+
+.character-checkbox {
+    background-color: #FBFBFF;
+    color: #657ED4;
+    border: #657ED4 solid 2px;
+    border-radius: 50px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.character-checkbox:hover {
+    background-color: #657ED4;
+    color: #FBFBFF;
+    border: #FBFBFF solid 2px;
+}
+
+.character-checkbox.active {
+    background-color: #657ED4;
+    color: #FBFBFF;
+    border: #FBFBFF solid 2px;
+}
+
+.character-checkbox.active:hover {
+    background-color: #FBFBFF;
+    color: #657ED4;
+    border: #657ED4 solid 2px;
+}
+
+/* Efeito visual ao modo de exclusão */
+.select-to-delete .character.click-to-delete {
+    padding: 20px;
+    border: 2px dashed #FF331F;
+    animation: pulse-border 1s infinite;
+    cursor: pointer;
+    position: relative;
+}
+
+.select-to-delete .character.click-to-delete::after {
+    content: "Clique para excluir";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #FF331F;
+    color: #FBFBFF;
+    padding: 2px 6px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+/* Animação de borda pulsante */
+@keyframes pulse-border {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 51, 31, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 51, 31, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 51, 31, 0);
+    }
+}
+
+/* Transições suaves para interações visuais */
+.open-button,
+.delete-button,
+.btn-pvtemp,
+.character-button,
+.character-checkbox,
+.character-checkbox.active,
+.form-container .btn,
+.form-container .cancel,
+.character {
+    transition: all 0.1s ease;
+}
+
+.select-to-delete .character.click-to-delete {
+    transition: all 0.1s ease;
+}
+
+
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .header {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .header > img {
+        width: 90px;
+        height: 90px;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+
+    .header > h1 {
+        font-size: 24px;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .open-button,
+    .delete-button {
+        width: 80%;
+        max-width: 300px;
+        font-size: 18px;
+        padding: 10px;
+        margin: 4px 0;
+    }
+
+    .content-container {
+        padding: 20px;
+    }
+
+    .character {
+        padding: 20px 10px;
+    }
+
+    .character-top {
+        align-items: center;
+        text-align: center;
+    }
+
+    .character-top img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+
+    .name-and-pv {
+        align-items: center;
+        gap: 5px;
+    }
+
+    .name-and-pv h2 {
+        font-size: 20px;
+    }
+
+    .name-and-pv span,
+    .btn-pvtemp {
+        font-size: 16px;
+        padding: 5px 12px;
+    }
+
+    .character-buttons {
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .character-button,
+    .character-checkbox {
+        padding: 12px;
+        font-size: 20px;
+    }
+
+    .form-popup {
+        width: 90%;
+        max-width: 360px;
+        padding: 15px;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="number"],
+    .form-container input[type="file"] {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .form-container .btn {
+        font-size: 15px;
+        padding: 8px;
+    }
+
+    .form-container h1 {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .form-container label {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    .select-to-delete .character.click-to-delete::after {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+}
