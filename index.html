@@ -22,10 +22,13 @@
 <body>
     <div class="main-layout">
         <section class="header">
-            <img src="assets/logo.avif" alt="Logo da Campanha a Mina Perdida de Phandelver" class="animate__animated animate__zoomIn animate__slow">
+            <img src="assets/logo.avif" alt="Logo da Campanha a Mina Perdida de Phandelver"
+                class="animate__animated animate__zoomIn animate__slow">
             <h1 class="animate__animated animate__jackInTheBox animate__slow">Sistema de Combate</h1>
-            <button class="animate__animated animate__zoomIn animate__slow open-button" onclick="openForm()"><i class="fa-solid fa-plus"></i> Personagem</button>
-            <button class="animate__animated animate__zoomIn animate__slow delete-button"><i class="fa-solid fa-minus"></i> Personagem</button>
+            <button class="animate__animated animate__zoomIn animate__slow open-button" onclick="openForm()"><i
+                    class="fa-solid fa-plus"></i> Personagem</button>
+            <button class="animate__animated animate__zoomIn animate__slow delete-button"><i
+                    class="fa-solid fa-minus"></i> Personagem</button>
 
             <!-- POPUP CRIAR PERSONAGEM -->
             <div class="form-popup" id="createForm">
@@ -53,7 +56,7 @@
             </div>
         </section>
         <div class="content-container">
-            <!-- POPUP PV TEMP -->
+            <!-- POPUP EDITAR PV TEMP -->
             <div class="form-popup" id="pvtempForm">
                 <form action="/action_page.php" class="form-container">
                     <h1>ALterar PVs Temporários</h1>
@@ -63,6 +66,17 @@
 
                     <button type="submit" class="btn">Confirmar</button>
                     <button type="button" class="btn cancel" onclick="closeFormPvTemp()">Cancelar</button>
+                </form>
+            </div>
+
+            <!-- POPUP EDITAR PV MÁXIMO -->
+            <div class="form-popup" id="pvmaxForm">
+                <form action="#" class="form-container">
+                    <h1>Alterar PV Máximo</h1>
+                    <label for="pvmax"><b>Novo PV Máximo:</b></label>
+                    <input type="number" placeholder="Digite o novo PV máximo" name="pvmax" required>
+                    <button type="submit" class="btn">Confirmar</button>
+                    <button type="button" class="btn cancel" onclick="closeFormPvMax()">Cancelar</button>
                 </form>
             </div>
 
@@ -90,6 +104,67 @@
                     <button type="submit" class="btn">Curar</button>
                     <button type="button" class="btn cancel" onclick="closeFormHeal()">Cancelar</button>
                 </form>
+            </div>
+
+            <!-- PERSONAGENS PADRAO -->
+            <div class="character animate__animated animate__fadeInUpBig animate__slow">
+                <div class="character-top">
+                    <img src="assets/token-elezara.jpeg" alt="Token da Elezara">
+                    <div class="name-and-pv">
+                        <h2>Elezara</h2>
+                        <span class="pv">20</span>
+                        <button class="btn-pvtemp">0</button>
+                    </div>
+                </div>
+                <div class="character-buttons">
+                    <button class="character-button" data-action="damage"><i data-lucide="sword"
+                            class="icon"></i></button>
+                    <button class="character-button" data-action="heal"><i data-lucide="heart-plus"
+                            class="icon"></i></button>
+                    <button class="character-checkbox"><i data-lucide="eye-closed" class="icon"></i></button>
+                    <button class="character-checkbox"><i data-lucide="skull" class="icon"></i></button>
+                    <button class="character-checkbox"><i data-lucide="sparkles" class="icon"></i></button>
+                </div>
+            </div>
+
+            <div class="character animate__animated animate__fadeInUpBig animate__slow">
+                <div class="character-top">
+                    <img src="assets/token-powder.jpeg" alt="Token da Powder">
+                    <div class="name-and-pv">
+                        <h2>Powder</h2>
+                        <span class="pv">17</span>
+                        <button class="btn-pvtemp">0</button>
+                    </div>
+                </div>
+                <div class="character-buttons">
+                    <button class="character-button" data-action="damage"><i data-lucide="sword"
+                            class="icon"></i></button>
+                    <button class="character-button" data-action="heal"><i data-lucide="heart-plus"
+                            class="icon"></i></button>
+                    <button class="character-checkbox"><i data-lucide="eye-closed" class="icon"></i></button>
+                    <button class="character-checkbox"><i data-lucide="skull" class="icon"></i></button>
+                    <button class="character-checkbox"><i data-lucide="sparkles" class="icon"></i></button>
+                </div>
+            </div>
+
+            <div class="character animate__animated animate__fadeInUpBig animate__slow">
+                <div class="character-top">
+                    <img src="assets/token-bellarosh.jpeg" alt="Token da Bellarosh">
+                    <div class="name-and-pv">
+                        <h2>Bellarosh</h2>
+                        <span class="pv">26</span>
+                        <button class="btn-pvtemp">0</button>
+                    </div>
+                </div>
+                <div class="character-buttons">
+                    <button class="character-button" data-action="damage"><i data-lucide="sword"
+                            class="icon"></i></button>
+                    <button class="character-button" data-action="heal"><i data-lucide="heart-plus"
+                            class="icon"></i></button>
+                    <button class="character-checkbox"><i data-lucide="eye-closed" class="icon"></i></button>
+                    <button class="character-checkbox"><i data-lucide="skull" class="icon"></i></button>
+                    <button class="character-checkbox"><i data-lucide="sparkles" class="icon"></i></button>
+                </div>
             </div>
         </div>
     </div>
