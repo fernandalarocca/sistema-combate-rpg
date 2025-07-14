@@ -135,7 +135,6 @@ body *:not(.header > h1, i) {
     color: #FBFBFF;
     padding: 10px 20px;
     border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
     margin-bottom: 10px;
     transition: background-color 0.2s ease;
@@ -148,8 +147,13 @@ body *:not(.header > h1, i) {
 #file-name {
     margin-left: 10px;
     color: #000;
-    font-size: 14px;
+    font-size: 16px;
     vertical-align: middle;
+}
+
+.file-upload span i {
+    margin-left: 7px;
+    font-size: 16px;
 }
 
 /* Botões do formulário */
