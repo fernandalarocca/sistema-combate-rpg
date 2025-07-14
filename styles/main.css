@@ -84,6 +84,10 @@ body *:not(.header > h1, i) {
     border: #FF331F solid 2px;
 }
 
+.open-button i, .delete-button i {
+    font-size: 16px;
+}
+
 /* Container do popup */
 .form-popup {
     display: none;
