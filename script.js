@@ -86,6 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
             openFormPvTemp();
         });
 
+        character.querySelector('.pv').addEventListener('click', () => {
+            selectedCharacter = character;
+            openFormPvMax();
+        });
+
         character.querySelectorAll('.character-checkbox').forEach(btn => {
             btn.addEventListener('click', function () {
                 this.classList.toggle('active');
@@ -101,6 +106,16 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedCharacter.querySelector('.btn-pvtemp').textContent = newPVTemp;
         }
         closeFormPvTemp();
+    });
+
+    // EDITAR PV MÁXIMO
+    document.querySelector('#pvmaxForm form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const newPVMax = parseInt(this.pvmax.value);
+        if (selectedCharacter) {
+            selectedCharacter.querySelector('.pv').textContent = newPVMax;
+        }
+        closeFormPvMax();
     });
 
     // DAMAGE
@@ -124,6 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         closeFormHeal();
     });
+
+    // Aplica os handlers nos personagens padrão já renderizados
+    document.querySelectorAll('.character').forEach(character => {
+        attachHandlers(character);
+    });
 });
 
 function openForm() {
@@ -140,6 +160,14 @@ function openFormPvTemp() {
 
 function closeFormPvTemp() {
     document.getElementById("pvtempForm").style.display = "none";
+}
+
+function openFormPvMax() {
+    document.getElementById("pvmaxForm").style.display = "block";
+}
+
+function closeFormPvMax() {
+    document.getElementById("pvmaxForm").style.display = "none";
 }
 
 function openFormDamage() {
