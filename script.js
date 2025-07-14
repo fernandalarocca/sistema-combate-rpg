@@ -4,6 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const charactersContainer = document.querySelector('.content-container');
     let selectedCharacter = null;
 
+    const fileInput = document.getElementById('token');
+    const fileNameDisplay = document.getElementById('file-name');
+
+    fileInput.addEventListener('change', function () {
+        fileNameDisplay.textContent = this.files.length > 0 ? this.files[0].name : "Nenhum arquivo escolhido";
+    });
+
     // Adicionar personagem
     document.querySelector('#createForm form').addEventListener('submit', function (e) {
         e.preventDefault();
