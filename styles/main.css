@@ -123,6 +123,35 @@ body *:not(.header > h1, i) {
     font-size: 16px;
 }
 
+/* Esconde o input padrão */
+.file-upload input[type="file"] {
+    display: none;
+}
+
+/* Estiliza o botão fake */
+.file-upload {
+    display: inline-block;
+    background-color: #657ED4;
+    color: #FBFBFF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.file-upload:hover {
+    background-color: #4052a2;
+}
+
+#file-name {
+    margin-left: 10px;
+    color: #000;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
 /* Botões do formulário */
 .form-container .btn {
     padding: 10px;
@@ -185,7 +214,8 @@ body *:not(.header > h1, i) {
     margin: 0;
 }
 
-.name-and-pv span, .btn-pvtemp {
+.name-and-pv span,
+.btn-pvtemp {
     color: #FBFBFF;
     border: #FBFBFF solid 2px;
     border-radius: 100px;
@@ -280,9 +310,11 @@ body *:not(.header > h1, i) {
     0% {
         box-shadow: 0 0 0 0 rgba(255, 51, 31, 0.7);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(255, 51, 31, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(255, 51, 31, 0);
     }
@@ -320,14 +352,14 @@ body *:not(.header > h1, i) {
         padding: 15px;
     }
 
-    .header > img {
+    .header>img {
         width: 90px;
         height: 90px;
         border-radius: 12px;
         object-fit: cover;
     }
 
-    .header > h1 {
+    .header>h1 {
         font-size: 24px;
         text-align: center;
         margin: 5px 0;
