@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (tokenFile) {
             reader.readAsDataURL(tokenFile);
         } else {
-            reader.onload({ target: { result: 'assets/token.jpeg' } });
+            reader.onload({ target: { result: 'assets/token.png' } });
         }
 
         this.reset();
