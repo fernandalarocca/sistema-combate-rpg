@@ -16,23 +16,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap"
         rel="stylesheet">
     <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
     <div class="main-layout">
         <section class="header">
-            <img src="assets/logo.avif" alt="Logo da Campanha a Mina Perdida de Phandelver">
-            <h1>Sistema de Combate</h1>
-            <button class="open-button" onclick="openForm()"><i class="fa-solid fa-plus"></i> Personagem</button>
-            <button class="delete-button"><i class="fa-solid fa-minus"></i> Personagem</button>
+            <img src="assets/logo.avif" alt="Logo da Campanha a Mina Perdida de Phandelver" class="animate__animated animate__zoomIn animate__slow">
+            <h1 class="animate__animated animate__jackInTheBox animate__slow">Sistema de Combate</h1>
+            <button class="animate__animated animate__zoomIn animate__slow open-button" onclick="openForm()"><i class="fa-solid fa-plus"></i> Personagem</button>
+            <button class="animate__animated animate__zoomIn animate__slow delete-button"><i class="fa-solid fa-minus"></i> Personagem</button>
 
             <!-- POPUP CRIAR PERSONAGEM -->
             <div class="form-popup" id="createForm">
                 <form action="/action_page.php" class="form-container">
                     <h1>Adiocionar Personagem</h1>
-
-                    <label for="token">Token:</label>
-                    <input type="file" id="token" name="token" accept="image/png, image/jpeg, image/jpg" />
 
                     <label for="name"><b>Nome:</b></label>
                     <input type="text" placeholder="Digite o nome" name="name" required>
@@ -42,6 +40,12 @@
 
                     <label for="pv-temp"><b>PV Temporário:</b></label>
                     <input type="number" placeholder="Digite os pontos de vida temporários" name="pv-temp" required>
+
+                    <label class="file-upload">
+                        <span>Escolher Token</span>
+                        <input type="file" id="token" name="token" accept="image/png, image/jpeg, image/jpg" />
+                    </label>
+                    <span id="file-name">Nenhum arquivo escolhido</span>
 
                     <button type="submit" class="btn">Criar</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Cancelar</button>
