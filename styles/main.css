@@ -228,11 +228,11 @@ body *:not(.header > h1, i) {
     background-color: #2F2D2E;
 }
 
-.btn-pvtemp {
+.btn-pvtemp, .pv {
     cursor: pointer;
 }
 
-.btn-pvtemp:hover {
+.btn-pvtemp:hover, .pv:hover {
     color: #2F2D2E;
     background-color: #FBFBFF;
     border: #2F2D2E solid 2px;
