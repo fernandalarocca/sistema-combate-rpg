@@ -353,7 +353,6 @@ body *:not(.header > h1, i) {
     padding: 10px;
 }
 
-
 @media (max-width: 768px) {
     .main-layout {
         flex-direction: column;
