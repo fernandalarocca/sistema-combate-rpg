@@ -195,6 +195,7 @@ body *:not(.header > h1, i) {
     padding-bottom: 20px;
     border-bottom: #FBFBFF solid 1px;
     margin: 10px 0px 10px 0px;
+    cursor: pointer;
 }
 
 .character-top {
@@ -343,6 +344,13 @@ body *:not(.header > h1, i) {
 
 .select-to-delete .character.click-to-delete {
     transition: all 0.1s ease;
+}
+
+.sortable-ghost {
+    opacity: 0.4;
+    background: #444;
+    border: 2px dashed #FBFBFF;
+    padding: 10px;
 }
 
 
