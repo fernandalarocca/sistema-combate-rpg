@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     lucide.createIcons();
 
+    new Sortable(document.querySelector('.content-container'), {
+        animation: 150,
+        ghostClass: 'sortable-ghost',
+    });
+
     const charactersContainer = document.querySelector('.content-container');
     let selectedCharacter = null;
 
