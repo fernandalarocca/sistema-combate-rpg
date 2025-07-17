@@ -42,6 +42,10 @@ body *:not(.header > h1, i) {
     text-align: center;
 }
 
+.header>h2 {
+    text-align: center;
+}
+
 /* Conteúdo ao lado da sidebar */
 .content-container {
     flex: 1;
