@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const character = document.createElement('div');
             character.className = 'character';
+            character.setAttribute('data-pvmax', pvMax);
             character.innerHTML = `
                 <div class="character-top">
                     <img src="${imgSrc}" alt="Token do personagem">
@@ -119,28 +120,61 @@ document.addEventListener("DOMContentLoaded", () => {
         const newPVMax = parseInt(this.pvmax.value);
         if (selectedCharacter) {
             selectedCharacter.querySelector('.pv').textContent = newPVMax;
+            selectedCharacter.setAttribute('data-pvmax', newPVMax);
         }
         closeFormPvMax();
     });
 
-    // DAMAGE
+    // DAMAGE (PV Temporários primeiro)
     document.querySelector('#damageForm form').addEventListener('submit', function (e) {
         e.preventDefault();
-        const dmg = parseInt(this.damage.value);
+        let dmg = parseInt(this.damage.value);
         if (selectedCharacter) {
-            const pv = selectedCharacter.querySelector('.pv');
-            pv.textContent = Math.max(0, parseInt(pv.textContent) - dmg);
+            const pvElement = selectedCharacter.querySelector('.pv');
+            const pvTempElement = selectedCharacter.querySelector('.btn-pvtemp');
+
+            let pv = parseInt(pvElement.textContent);
+            let pvTemp = parseInt(pvTempElement.textContent);
+
+            // Primeiro desconta dos PV temporários
+            if (pvTemp > 0) {
+                const usedTemp = Math.min(dmg, pvTemp);
+                pvTemp -= usedTemp;
+                dmg -= usedTemp;
+            }
+
+            // Depois, se ainda houver dano, desconta dos PV normais
+            if (dmg > 0) {
+                pv = Math.max(0, pv - dmg);
+            }
+
+            // Atualiza os valores na tela
+            pvElement.textContent = pv;
+            pvTempElement.textContent = pvTemp;
         }
         closeFormDamage();
     });
 
-    // HEAL
+    // HEAL (Apenas PV normal, limitado ao PV máximo)
     document.querySelector('#healForm form').addEventListener('submit', function (e) {
         e.preventDefault();
         const heal = parseInt(this.heal.value);
         if (selectedCharacter) {
-            const pv = selectedCharacter.querySelector('.pv');
-            pv.textContent = parseInt(pv.textContent) + heal;
+            const pvElement = selectedCharacter.querySelector('.pv');
+            let pv = parseInt(pvElement.textContent);
+
+            // Definir o PV máximo do personagem (armazenado no atributo data-pvmax)
+            let pvMax = parseInt(selectedCharacter.getAttribute('data-pvmax'));
+
+            // Caso o atributo ainda não exista, define o valor atual como PV máximo inicial
+            if (isNaN(pvMax)) {
+                pvMax = pv;
+                selectedCharacter.setAttribute('data-pvmax', pvMax);
+            }
+
+            // Aumenta os PVs sem ultrapassar o máximo
+            pv = Math.min(pv + heal, pvMax);
+            pvElement.textContent = pv;
         }
         closeFormHeal();
     });
