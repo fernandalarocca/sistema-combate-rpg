@@ -16,6 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
         fileNameDisplay.textContent = this.files.length > 0 ? this.files[0].name : "Nenhum arquivo escolhido";
     });
 
+    // Função para verificar sobrecarga
+    function checkLoadStatus(character) {
+        const loadButton = character.querySelector('.btn-load');
+        if (!loadButton) return;
+
+        const currentLoad = parseFloat(loadButton.textContent.replace(" Kg", ""));
+        const maxLoad = parseFloat(character.getAttribute('data-loadmax'));
+
+        if (!isNaN(currentLoad) && !isNaN(maxLoad)) {
+            if (currentLoad > maxLoad) {
+                loadButton.style.color = "red";
+            } else {
+                loadButton.style.color = "";
+            }
+        }
+    }
+
     // Adicionar personagem
     document.querySelector('#createForm form').addEventListener('submit', function (e) {
         e.preventDefault();
@@ -33,6 +50,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const character = document.createElement('div');
             character.className = 'character';
             character.setAttribute('data-pvmax', pvMax);
+
+            // Armazena a carga máxima no personagem
+            if (!isNaN(loadMax)) {
+                character.setAttribute('data-loadmax', loadMax);
+            }
+
+            // Verifica se os valores de carga foram informados
+            const loadButtonHTML = (!isNaN(load) && !isNaN(loadMax))
+                ? `<button class="btn-load">${load} Kg</button>`
+                : "";
+
             character.innerHTML = `
                 <div class="character-top">
                     <img src="${imgSrc}" alt="Token do personagem">
@@ -40,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h2>${name}</h2>
                         <span class="pv">${pvMax}</span>
                         <button class="btn-pvtemp">${pvTemp}</button>
-                        <button class="btn-load">${load}</button>
+                        ${loadButtonHTML}
                     </div>
                 </div>
                 <div class="character-buttons">
@@ -51,8 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button class="character-checkbox"><i data-lucide="sparkles" class="icon"></i></button>
                 </div>
             `;
+
             charactersContainer.appendChild(character);
             lucide.createIcons();
+
+            // Verifica sobrecarga logo após criar
+            checkLoadStatus(character);
 
             closeForm();
             attachHandlers(character);
@@ -100,10 +132,13 @@ document.addEventListener("DOMContentLoaded", () => {
             openFormPvMax();
         });
 
-        character.querySelector('.btn-load').addEventListener('click', () => {
-            selectedCharacter = character;
-            openFormLoad();
-        });
+        const loadButton = character.querySelector('.btn-load');
+        if (loadButton) {
+            loadButton.addEventListener('click', () => {
+                selectedCharacter = character;
+                openFormLoad();
+            });
+        }
 
         character.querySelectorAll('.character-checkbox').forEach(btn => {
             btn.addEventListener('click', function () {
@@ -138,7 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         const newLoad = parseFloat(this.load.value);
         if (selectedCharacter) {
-            selectedCharacter.querySelector('.btn-load').textContent = newLoad;
+            selectedCharacter.querySelector('.btn-load').textContent = `${newLoad} Kg`;
+            checkLoadStatus(selectedCharacter); // Verifica sobrecarga após alterar
         }
         closeFormLoad();
     })
@@ -147,6 +183,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('#damageForm form').addEventListener('submit', function (e) {
         e.preventDefault();
         let dmg = parseInt(this.damage.value);
+        const isResistant = document.getElementById('resistanceCheckbox').checked;
+        if (isResistant) {
+            dmg = Math.floor(dmg / 2);
+        }
+
         if (selectedCharacter) {
             const pvElement = selectedCharacter.querySelector('.pv');
             const pvTempElement = selectedCharacter.querySelector('.btn-pvtemp');
@@ -184,69 +225,50 @@ document.addEventListener("DOMContentLoaded", () => {
             // Definir o PV máximo do personagem (armazenado no atributo data-pvmax)
             let pvMax = parseInt(selectedCharacter.getAttribute('data-pvmax'));
 
-            // Caso o atributo ainda não exista, define o valor atual como PV máximo inicial
             if (isNaN(pvMax)) {
                 pvMax = pv;
                 selectedCharacter.setAttribute('data-pvmax', pvMax);
             }
 
-            // Aumenta os PVs sem ultrapassar o máximo
             pv = Math.min(pv + heal, pvMax);
             pvElement.textContent = pv;
         }
         closeFormHeal();
     });
 
-    // Aplica os handlers nos personagens padrão já renderizados
-    document.querySelectorAll('.character').forEach(character => {
+    const personagensPadrao = document.querySelectorAll('.character');
+
+    // Definindo valores individuais
+    if (personagensPadrao[0]) personagensPadrao[0].setAttribute('data-loadmax', 112.5);  // Elezara
+    if (personagensPadrao[1]) personagensPadrao[1].setAttribute('data-loadmax', 90);     // Powder
+    if (personagensPadrao[2]) personagensPadrao[2].setAttribute('data-loadmax', 105);    // Bellarosh
+
+    // **Novo trecho para ajustar o PV inicial**
+    personagensPadrao.forEach(character => {
+        const pvMax = parseInt(character.getAttribute('data-pvmax'));
+        const pvElement = character.querySelector('.pv');
+        if (!isNaN(pvMax)) {
+            pvElement.textContent = pvMax;
+        }
+    });
+
+    // Continua com os handlers e checagem de carga
+    personagensPadrao.forEach(character => {
+        checkLoadStatus(character);
         attachHandlers(character);
     });
 });
 
-function openForm() {
-    document.getElementById("createForm").style.display = "block";
-}
-
-function closeForm() {
-    document.getElementById("createForm").style.display = "none";
-}
-
-function openFormPvTemp() {
-    document.getElementById("pvtempForm").style.display = "block";
-}
-
-function closeFormPvTemp() {
-    document.getElementById("pvtempForm").style.display = "none";
-}
-
-function openFormPvMax() {
-    document.getElementById("pvmaxForm").style.display = "block";
-}
-
-function closeFormPvMax() {
-    document.getElementById("pvmaxForm").style.display = "none";
-}
-
-function openFormLoad () {
-    document.getElementById("loadForm").style.display = "block";
-}
-
-function closeFormLoad () {
-    document.getElementById("loadForm").style.display = "none";
-}
-
-function openFormDamage() {
-    document.getElementById("damageForm").style.display = "block";
-}
-
-function closeFormDamage() {
-    document.getElementById("damageForm").style.display = "none";
-}
-
-function openFormHeal() {
-    document.getElementById("healForm").style.display = "block";
-}
-
-function closeFormHeal() {
-    document.getElementById("healForm").style.display = "none";
-}
+// Funções de abrir/fechar formulários
+function openForm() { document.getElementById("createForm").style.display = "block"; }
+function closeForm() { document.getElementById("createForm").style.display = "none"; }
+function openFormPvTemp() { document.getElementById("pvtempForm").style.display = "block"; }
+function closeFormPvTemp() { document.getElementById("pvtempForm").style.display = "none"; }
+function openFormPvMax() { document.getElementById("pvmaxForm").style.display = "block"; }
+function closeFormPvMax() { document.getElementById("pvmaxForm").style.display = "none"; }
+function openFormLoad() { document.getElementById("loadForm").style.display = "block"; }
+function closeFormLoad() { document.getElementById("loadForm").style.display = "none"; }
+function openFormDamage() { document.getElementById("damageForm").style.display = "block"; }
+function closeFormDamage() { document.getElementById("damageForm").style.display = "none"; }
+function openFormHeal() { document.getElementById("healForm").style.display = "block"; }
+function closeFormHeal() { document.getElementById("healForm").style.display = "none"; }
