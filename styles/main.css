@@ -106,6 +106,9 @@ body *:not(.header > h1, i) {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    width: 500px;
+    max-width: 90%;
+    padding: 25px;
 }
 
 /* Estilo do formulário */
@@ -116,8 +119,11 @@ body *:not(.header > h1, i) {
 
 /* Inputs do formulário */
 .form-container input[type="text"],
-.form-container input[type="number"] {
-    padding: 10px;
+.form-container input[type="number"],
+.form-container input[type="file"] {
+    width: 95%;
+    font-size: 16px;
+    padding: 12px;
     margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -228,20 +234,24 @@ body *:not(.header > h1, i) {
 }
 
 .name-and-pv span,
-.btn-pvtemp {
+.btn-pvtemp, .btn-load {
     color: #FBFBFF;
     border: #FBFBFF solid 2px;
-    border-radius: 100px;
     padding: 5px 10px;
     font-size: 20px;
     background-color: #2F2D2E;
 }
 
-.btn-pvtemp, .pv {
+.name-and-pv span,
+.btn-pvtemp {
+    border-radius: 100px;
+}
+
+.btn-pvtemp, .pv, .btn-load {
     cursor: pointer;
 }
 
-.btn-pvtemp:hover, .pv:hover {
+.btn-pvtemp:hover, .pv:hover, .btn-load:hover {
     color: #2F2D2E;
     background-color: #FBFBFF;
     border: #2F2D2E solid 2px;
@@ -364,7 +374,7 @@ body *:not(.header > h1, i) {
     }
 
     .header {
-        width: 100%;
+        width: 93%;
         flex-direction: column;
         align-items: center;
         gap: 10px;
