@@ -129,8 +129,17 @@
                 <form action="/action_page.php" class="form-container">
                     <h1>Alterar carga atual</h1>
 
-                    <label for="load"><b>Nova carga atual:</b></label>
-                    <input type="text" placeholder="Quanto o personagem deverá carregar agora?" name="load" required>
+                    <label for="load"><b>Valor:</b></label>
+                    <input type="number" step="0.1" placeholder="Digite o valor" name="load" required>
+
+                    <label>
+                        <input type="radio" name="loadAction" value="add" checked>
+                        Aumentar
+                    </label>
+                    <label>
+                        <input type="radio" name="loadAction" value="remove">
+                        Diminuir
+                    </label>
 
                     <button type="submit" class="btn">Confirmar</button>
                     <button type="button" class="btn cancel" onclick="closeFormLoad()">Cancelar</button>
