@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fileNameDisplay.textContent = this.files.length > 0 ? this.files[0].name : "Nenhum arquivo escolhido";
     });
 
-    // Função para verificar sobrecarga
+    // Função para verificar sobrecarga com regras de cor
     function checkLoadStatus(character) {
         const loadButton = character.querySelector('.btn-load');
         if (!loadButton) return;
@@ -25,10 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const maxLoad = parseFloat(character.getAttribute('data-loadmax'));
 
         if (!isNaN(currentLoad) && !isNaN(maxLoad)) {
-            if (currentLoad > maxLoad) {
+            const limiteAmarelo = maxLoad + (maxLoad / 2);
+            const limiteLaranja = maxLoad * 2;
+
+            if (currentLoad > limiteLaranja) {
                 loadButton.style.color = "red";
+            } else if (currentLoad > limiteAmarelo) {
+                loadButton.style.color = "orange";
+            } else if (currentLoad > maxLoad) {
+                loadButton.style.color = "gold";
             } else {
-                loadButton.style.color = "";
+                loadButton.style.color = ""; // cor padrão
             }
         }
     }
