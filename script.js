@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const name = this.name.value;
         const pvMax = parseInt(this['pv-max'].value);
         const pvTemp = parseInt(this['pv-temp'].value);
+        const load = parseFloat(this['load'].value);
+        const loadMax = parseFloat(this['load-max'].value);
         const tokenFile = this.token.files[0];
 
         const reader = new FileReader();
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h2>${name}</h2>
                         <span class="pv">${pvMax}</span>
                         <button class="btn-pvtemp">${pvTemp}</button>
+                        <button class="btn-load">${load}</button>
                     </div>
                 </div>
                 <div class="character-buttons">
@@ -97,6 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
             openFormPvMax();
         });
 
+        character.querySelector('.btn-load').addEventListener('click', () => {
+            selectedCharacter = character;
+            openFormLoad();
+        });
+
         character.querySelectorAll('.character-checkbox').forEach(btn => {
             btn.addEventListener('click', function () {
                 this.classList.toggle('active');
@@ -124,6 +132,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         closeFormPvMax();
     });
+
+    // EDITAR CARGA ATUAL
+    document.querySelector('#loadForm form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const newLoad = parseFloat(this.load.value);
+        if (selectedCharacter) {
+            selectedCharacter.querySelector('.btn-load').textContent = newLoad;
+        }
+        closeFormLoad();
+    })
 
     // DAMAGE (PV Temporários primeiro)
     document.querySelector('#damageForm form').addEventListener('submit', function (e) {
@@ -207,6 +225,14 @@ function openFormPvMax() {
 
 function closeFormPvMax() {
     document.getElementById("pvmaxForm").style.display = "none";
+}
+
+function openFormLoad () {
+    document.getElementById("loadForm").style.display = "block";
+}
+
+function closeFormLoad () {
+    document.getElementById("loadForm").style.display = "none";
 }
 
 function openFormDamage() {
