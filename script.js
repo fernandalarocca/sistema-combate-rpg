@@ -178,13 +178,24 @@ document.addEventListener("DOMContentLoaded", () => {
     // EDITAR CARGA ATUAL
     document.querySelector('#loadForm form').addEventListener('submit', function (e) {
         e.preventDefault();
-        const newLoad = parseFloat(this.load.value);
+        const loadValue = parseFloat(this.load.value);
+        const action = this.loadAction.value; // "add" ou "remove"
+
         if (selectedCharacter) {
-            selectedCharacter.querySelector('.btn-load').textContent = `${newLoad} Kg`;
+            const loadButton = selectedCharacter.querySelector('.btn-load');
+            let currentLoad = parseFloat(loadButton.textContent.replace(" Kg", ""));
+
+            if (action === "add") {
+                currentLoad += loadValue;
+            } else {
+                currentLoad = Math.max(0, currentLoad - loadValue);
+            }
+
+            loadButton.textContent = `${currentLoad} Kg`;
             checkLoadStatus(selectedCharacter); // Verifica sobrecarga após alterar
         }
         closeFormLoad();
-    })
+    });
 
     // DAMAGE (PV Temporários primeiro)
     document.querySelector('#damageForm form').addEventListener('submit', function (e) {
