@@ -179,6 +179,7 @@ body *:not(.header > h1, i) {
     background-color: #A8C256;
     color: #FBFBFF;
     cursor: pointer;
+    font-size: 20px;
 }
 
 .form-container .btn:hover {
