@@ -32,36 +32,39 @@
                     class="fa-solid fa-minus"></i> Personagem</button>
             <h2>Arraste os personagens para trocar a ordem</h1>
 
-            <!-- POPUP CRIAR PERSONAGEM -->
-            <div class="form-popup" id="createForm">
-                <form action="/action_page.php" class="form-container">
-                    <h1>Adiocionar Personagem</h1>
+                <!-- POPUP CRIAR PERSONAGEM -->
+                <div class="form-popup" id="createForm">
+                    <form action="/action_page.php" class="form-container">
+                        <h1>Adiocionar Personagem</h1>
 
-                    <label for="name"><b>Nome:</b></label>
-                    <input type="text" placeholder="Digite o nome" name="name" required>
+                        <label for="name"><b>Nome:</b></label>
+                        <input type="text" placeholder="Digite o nome" name="name" required>
 
-                    <label for="pv-max"><b>PV Máximo:</b></label>
-                    <input type="number" placeholder="Digite a vida máxima" name="pv-max" required>
+                        <label for="pv-max"><b>PV Máximo:</b></label>
+                        <input type="number" placeholder="Digite a vida máxima" name="pv-max" required>
 
-                    <label for="pv-temp"><b>PV Temporário:</b></label>
-                    <input type="number" placeholder="Digite os pontos de vida temporários" name="pv-temp" required>
+                        <label for="pv-temp"><b>PV Temporário:</b></label>
+                        <input type="number" placeholder="Digite os pontos de vida temporários" name="pv-temp" required>
 
-                    <label for="load"><b>Carga atual:</b></label>
-                    <input type="text" placeholder="Digite quanto de peso o personagem está cerregando agora" name="load">
+                        <label for="load"><b>Carga atual:</b></label>
+                        <input type="text" placeholder="Digite quanto de peso o personagem está cerregando agora"
+                            name="load">
 
-                    <label for="load-max"><b>Carga máxima:</b></label>
-                    <input type="text" placeholder="Digite o peso máximo que o personagem pode carregar sem ficar com sobrecarga" name="load-max">
+                        <label for="load-max"><b>Carga máxima:</b></label>
+                        <input type="text"
+                            placeholder="Digite o peso máximo que o personagem pode carregar sem ficar com sobrecarga"
+                            name="load-max">
 
-                    <label class="file-upload">
-                        <span>Escolher Token <i class="fa-solid fa-upload"></i></span>
-                        <input type="file" id="token" name="token" accept="image/png, image/jpeg, image/jpg" />
-                    </label>
-                    <span id="file-name">Nenhum arquivo escolhido</span>
+                        <label class="file-upload">
+                            <span>Escolher Token <i class="fa-solid fa-upload"></i></span>
+                            <input type="file" id="token" name="token" accept="image/png, image/jpeg, image/jpg" />
+                        </label>
+                        <span id="file-name">Nenhum arquivo escolhido</span>
 
-                    <button type="submit" class="btn">Criar</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Cancelar</button>
-                </form>
-            </div>
+                        <button type="submit" class="btn">Criar</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">Cancelar</button>
+                    </form>
+                </div>
         </section>
         <div class="content-container">
             <!-- POPUP EDITAR PV TEMP -->
@@ -98,6 +101,11 @@
                     <label for="damage"><b>Dano:</b></label>
                     <input type="number" placeholder="Digite o dano" name="damage" required>
 
+                    <label>
+                        <input type="checkbox" name="resistance" id="resistanceCheckbox">
+                        Resistência (metade do dano)
+                    </label>
+
                     <button type="submit" class="btn">Atacar</button>
                     <button type="button" class="btn cancel" onclick="closeFormDamage()">Cancelar</button>
                 </form>
@@ -130,14 +138,14 @@
             </div>
 
             <!-- PERSONAGENS PADRAO -->
-            <div class="character animate__animated animate__fadeIn animate__slow">
+            <div class="character animate__animated animate__fadeIn animate__slow" data-pvmax="20">
                 <div class="character-top">
                     <img src="assets/token-elezara.jpeg" alt="Token da Elezara">
                     <div class="name-and-pv">
                         <h2>Elezara</h2>
-                        <span class="pv">20</span>
+                        <span class="pv">0</span>
                         <button class="btn-pvtemp">0</button>
-                        <button class="btn-load">12.5</button>
+                        <button class="btn-load">53.5 Kg</button>
                     </div>
                 </div>
                 <div class="character-buttons">
@@ -151,14 +159,14 @@
                 </div>
             </div>
 
-            <div class="character animate__animated animate__fadeIn animate__slow">
+            <div class="character animate__animated animate__fadeIn animate__slow" data-pvmax="17">
                 <div class="character-top">
                     <img src="assets/token-powder.jpeg" alt="Token da Powder">
                     <div class="name-and-pv">
                         <h2>Powder</h2>
-                        <span class="pv">17</span>
+                        <span class="pv">0</span>
                         <button class="btn-pvtemp">0</button>
-                        <button class="btn-load">12.5</button>
+                        <button class="btn-load">76.5 Kg</button>
                     </div>
                 </div>
                 <div class="character-buttons">
@@ -172,14 +180,14 @@
                 </div>
             </div>
 
-            <div class="character animate__animated animate__fadeIn animate__slow">
+            <div class="character animate__animated animate__fadeIn animate__slow" data-pvmax="26">
                 <div class="character-top">
                     <img src="assets/token-bellarosh.jpeg" alt="Token da Bellarosh">
                     <div class="name-and-pv">
                         <h2>Bellarosh</h2>
-                        <span class="pv">26</span>
+                        <span class="pv">0</span>
                         <button class="btn-pvtemp">0</button>
-                        <button class="btn-load">12.5</button>
+                        <button class="btn-load">35.5 Kg</button>
                     </div>
                 </div>
                 <div class="character-buttons">
