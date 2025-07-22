@@ -46,6 +46,12 @@
                     <label for="pv-temp"><b>PV Temporário:</b></label>
                     <input type="number" placeholder="Digite os pontos de vida temporários" name="pv-temp" required>
 
+                    <label for="load"><b>Carga atual:</b></label>
+                    <input type="text" placeholder="Digite quanto de peso o personagem está cerregando agora" name="load">
+
+                    <label for="load-max"><b>Carga máxima:</b></label>
+                    <input type="text" placeholder="Digite o peso máximo que o personagem pode carregar sem ficar com sobrecarga" name="load-max">
+
                     <label class="file-upload">
                         <span>Escolher Token <i class="fa-solid fa-upload"></i></span>
                         <input type="file" id="token" name="token" accept="image/png, image/jpeg, image/jpg" />
@@ -61,7 +67,7 @@
             <!-- POPUP EDITAR PV TEMP -->
             <div class="form-popup" id="pvtempForm">
                 <form action="/action_page.php" class="form-container">
-                    <h1>ALterar PVs Temporários</h1>
+                    <h1>Alterar PVs Temporários</h1>
 
                     <label for="pvtemp"><b>Pontos de Vida Temporários:</b></label>
                     <input type="number" placeholder="Digite o novo PV temporário" name="pvtemp" required>
@@ -75,8 +81,10 @@
             <div class="form-popup" id="pvmaxForm">
                 <form action="#" class="form-container">
                     <h1>Alterar PV Máximo</h1>
+
                     <label for="pvmax"><b>Novo PV Máximo:</b></label>
                     <input type="number" placeholder="Digite o novo PV máximo" name="pvmax" required>
+
                     <button type="submit" class="btn">Confirmar</button>
                     <button type="button" class="btn cancel" onclick="closeFormPvMax()">Cancelar</button>
                 </form>
@@ -108,6 +116,19 @@
                 </form>
             </div>
 
+            <!-- POPUP CARGA -->
+            <div class="form-popup" id="loadForm">
+                <form action="/action_page.php" class="form-container">
+                    <h1>Alterar carga atual</h1>
+
+                    <label for="load"><b>Nova carga atual:</b></label>
+                    <input type="text" placeholder="Quanto o personagem deverá carregar agora?" name="load" required>
+
+                    <button type="submit" class="btn">Confirmar</button>
+                    <button type="button" class="btn cancel" onclick="closeFormLoad()">Cancelar</button>
+                </form>
+            </div>
+
             <!-- PERSONAGENS PADRAO -->
             <div class="character animate__animated animate__fadeIn animate__slow">
                 <div class="character-top">
@@ -116,6 +137,7 @@
                         <h2>Elezara</h2>
                         <span class="pv">20</span>
                         <button class="btn-pvtemp">0</button>
+                        <button class="btn-load">12.5</button>
                     </div>
                 </div>
                 <div class="character-buttons">
@@ -136,6 +158,7 @@
                         <h2>Powder</h2>
                         <span class="pv">17</span>
                         <button class="btn-pvtemp">0</button>
+                        <button class="btn-load">12.5</button>
                     </div>
                 </div>
                 <div class="character-buttons">
@@ -156,6 +179,7 @@
                         <h2>Bellarosh</h2>
                         <span class="pv">26</span>
                         <button class="btn-pvtemp">0</button>
+                        <button class="btn-load">12.5</button>
                     </div>
                 </div>
                 <div class="character-buttons">
