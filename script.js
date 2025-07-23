@@ -290,3 +290,31 @@ function openFormDamage() { document.getElementById("damageForm").style.display 
 function closeFormDamage() { document.getElementById("damageForm").style.display = "none"; }
 function openFormHeal() { document.getElementById("healForm").style.display = "block"; }
 function closeFormHeal() { document.getElementById("healForm").style.display = "none"; }
+function openCurrencyConverter() { document.getElementById("currencyConverterForm").style.display = "block"; }
+function closeCurrencyConverter() { document.getElementById("currencyConverterForm").style.display = "none"; }
+
+// Conversão de moedas seguindo a tabela D&D
+const conversionRates = {
+    pp: 1000, // base em cobre
+    gp: 100,
+    ep: 50,
+    sp: 10,
+    cp: 1
+};
+
+function convertCurrency() {
+    const amount = parseFloat(document.getElementById("amount").value);
+    const from = document.getElementById("fromCurrency").value;
+    const to = document.getElementById("toCurrency").value;
+
+    if (isNaN(amount)) {
+        document.getElementById("conversionResult").textContent = "Digite um valor válido.";
+        return;
+    }
+
+    const amountInCopper = amount * conversionRates[from];
+    const convertedAmount = amountInCopper / conversionRates[to];
+
+    document.getElementById("conversionResult").textContent =
+        `${amount} ${from} = ${convertedAmount.toFixed(2)} ${to}`;
+}
