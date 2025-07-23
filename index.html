@@ -26,45 +26,82 @@
             <img src="assets/logo.avif" alt="Logo da Campanha a Mina Perdida de Phandelver"
                 class="animate__animated animate__fadeIn animate__slow">
             <h1 class="animate__animated animate__jackInTheBox animate__slow">Sistema de Combate</h1>
-            <button class="animate__animated animate__fadeIn animate__slow open-button" onclick="openForm()"><i
-                    class="fa-solid fa-plus"></i> Personagem</button>
-            <button class="animate__animated animate__fadeIn animate__slow delete-button"><i
-                    class="fa-solid fa-minus"></i> Personagem</button>
-            <h2 class="animate__animated animate__fadeIn animate__slow">Arraste os personagens para trocar a ordem</h1>
+            <button class="animate__animated animate__fadeIn animate__slow open-button" onclick="openForm()">
+                <i class="fa-solid fa-plus"></i> Personagem
+            </button>
+            <button class="animate__animated animate__fadeIn animate__slow delete-button">
+                <i class="fa-solid fa-minus"></i> Personagem
+            </button>
+            <h2 class="animate__animated animate__fadeIn animate__slow">Arraste os personagens para trocar a ordem</h2>
+            <button class="calculator-button" onclick="openCurrencyConverter()">
+                <i class="fa-solid fa-calculator"></i> Conversor de Moedas
+            </button>
 
-                <!-- POPUP CRIAR PERSONAGEM -->
-                <div class="form-popup" id="createForm">
-                    <form action="/action_page.php" class="form-container">
-                        <h1>Adiocionar Personagem</h1>
+            <!-- POPUP CONVERSOR DE MOEDAS -->
+            <div class="form-popup" id="currencyConverterForm">
+                <form action="#" class="form-container" id="currency-form">
+                    <h1>Conversor de Moedas</h1>
 
-                        <label for="name"><b>Nome:</b></label>
-                        <input type="text" placeholder="Digite o nome" name="name" required>
+                    <label for="amount"><b>Quantidade:</b></label>
+                    <input type="number" id="amount" name="amount" placeholder="Digite o valor" required>
 
-                        <label for="pv-max"><b>PV Máximo:</b></label>
-                        <input type="number" placeholder="Digite a vida máxima" name="pv-max" required>
+                    <label for="fromCurrency"><b>De:</b></label>
+                    <select id="fromCurrency" name="fromCurrency">
+                        <option value="pp">Platina (pl)</option>
+                        <option value="gp">Ouro (po)</option>
+                        <option value="ep">Electrum (pe)</option>
+                        <option value="sp">Prata (pp)</option>
+                        <option value="cp">Cobre (pc)</option>
+                    </select>
 
-                        <label for="pv-temp"><b>PV Temporário:</b></label>
-                        <input type="number" placeholder="Digite os pontos de vida temporários" name="pv-temp" required>
+                    <label for="toCurrency"><b>Para:</b></label>
+                    <select id="toCurrency" name="toCurrency">
+                        <option value="pp">Platina (pl)</option>
+                        <option value="gp">Ouro (po)</option>
+                        <option value="ep">Electrum (pe)</option>
+                        <option value="sp">Prata (pp)</option>
+                        <option value="cp">Cobre (pc)</option>
+                    </select>
 
-                        <label for="load"><b>Carga atual:</b></label>
-                        <input type="text" placeholder="Digite quanto de peso o personagem está cerregando agora"
-                            name="load">
+                    <button type="button" class="btn" onclick="convertCurrency()">Converter</button>
+                    <div id="conversionResult" style="margin-top:10px; font-size:18px; color:#657ED4;"></div>
+                    <button type="button" class="btn cancel" onclick="closeCurrencyConverter()">Fechar</button>
+                </form>
+            </div>
 
-                        <label for="load-max"><b>Carga máxima:</b></label>
-                        <input type="text"
-                            placeholder="Digite o peso máximo que o personagem pode carregar sem ficar com sobrecarga"
-                            name="load-max">
+            <!-- POPUP CRIAR PERSONAGEM -->
+            <div class="form-popup" id="createForm">
+                <form action="/action_page.php" class="form-container">
+                    <h1>Adiocionar Personagem</h1>
 
-                        <label class="file-upload">
-                            <span>Escolher Token <i class="fa-solid fa-upload"></i></span>
-                            <input type="file" id="token" name="token" accept="image/png, image/jpeg, image/jpg" />
-                        </label>
-                        <span id="file-name">Nenhum arquivo escolhido</span>
+                    <label for="name"><b>Nome:</b></label>
+                    <input type="text" placeholder="Digite o nome" name="name" required>
 
-                        <button type="submit" class="btn">Criar</button>
-                        <button type="button" class="btn cancel" onclick="closeForm()">Cancelar</button>
-                    </form>
-                </div>
+                    <label for="pv-max"><b>PV Máximo:</b></label>
+                    <input type="number" placeholder="Digite a vida máxima" name="pv-max" required>
+
+                    <label for="pv-temp"><b>PV Temporário:</b></label>
+                    <input type="number" placeholder="Digite os pontos de vida temporários" name="pv-temp" required>
+
+                    <label for="load"><b>Carga atual:</b></label>
+                    <input type="text" placeholder="Digite quanto de peso o personagem está cerregando agora"
+                        name="load">
+
+                    <label for="load-max"><b>Carga máxima:</b></label>
+                    <input type="text"
+                        placeholder="Digite o peso máximo que o personagem pode carregar sem ficar com sobrecarga"
+                        name="load-max">
+
+                    <label class="file-upload">
+                        <span>Escolher Token <i class="fa-solid fa-upload"></i></span>
+                        <input type="file" id="token" name="token" accept="image/png, image/jpeg, image/jpg" />
+                    </label>
+                    <span id="file-name">Nenhum arquivo escolhido</span>
+
+                    <button type="submit" class="btn">Criar</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Cancelar</button>
+                </form>
+            </div>
         </section>
         <div class="content-container">
             <!-- POPUP EDITAR PV TEMP -->
