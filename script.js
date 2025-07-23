@@ -295,11 +295,11 @@ function closeCurrencyConverter() { document.getElementById("currencyConverterFo
 
 // Conversão de moedas seguindo a tabela D&D
 const conversionRates = {
-    pp: 1000, // base em cobre
-    gp: 100,
-    ep: 50,
-    sp: 10,
-    cp: 1
+    pl: 1000, // base em cobre
+    po: 100,
+    pe: 50,
+    pp: 10,
+    pc: 1
 };
 
 function convertCurrency() {
