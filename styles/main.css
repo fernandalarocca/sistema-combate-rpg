@@ -55,7 +55,8 @@ body *:not(.header > h1, i) {
 
 /* Estilo do botão */
 .open-button,
-.delete-button {
+.delete-button,
+.calculator-button {
     padding: 10px 15px;
     margin: 5px;
     font-size: 25px;
@@ -73,9 +74,15 @@ body *:not(.header > h1, i) {
     background-color: #FF331F;
 }
 
+.calculator-button {
+    background-color: #657ED4;
+}
+
 .open-button:hover,
-.delete-button:hover {
+.delete-button:hover,
+.calculator-button:hover {
     background-color: #FBFBFF;
+    transition: all 0.2s ease;
 }
 
 .open-button:hover {
@@ -88,8 +95,33 @@ body *:not(.header > h1, i) {
     border: #FF331F solid 2px;
 }
 
-.open-button i, .delete-button i {
+.calculator-button:hover {
+    color: #657ED4;
+    border: #657ED4 solid 2px;
+}
+
+.open-button i,
+.delete-button i,
+.calculator-button i {
     font-size: 16px;
+}
+
+#conversionResult {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Selects do Conversor de Moedas */
+.form-container select {
+    width: 95%;
+    font-size: 18px; /* aumenta o tamanho da fonte */
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #FBFBFF;
+    color: #2F2D2E;
+    cursor: pointer;
 }
 
 /* Container do popup */
@@ -235,7 +267,8 @@ body *:not(.header > h1, i) {
 }
 
 .name-and-pv span,
-.btn-pvtemp, .btn-load {
+.btn-pvtemp,
+.btn-load {
     color: #FBFBFF;
     border: #FBFBFF solid 2px;
     padding: 5px 10px;
@@ -248,11 +281,15 @@ body *:not(.header > h1, i) {
     border-radius: 100px;
 }
 
-.btn-pvtemp, .pv, .btn-load {
+.btn-pvtemp,
+.pv,
+.btn-load {
     cursor: pointer;
 }
 
-.btn-pvtemp:hover, .pv:hover, .btn-load:hover {
+.btn-pvtemp:hover,
+.pv:hover,
+.btn-load:hover {
     color: #2F2D2E;
     background-color: #FBFBFF;
     border: #2F2D2E solid 2px;
